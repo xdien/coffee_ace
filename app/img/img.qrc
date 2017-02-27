@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/img"/>
+    <qresource prefix="/qaiv/img">
+        <file alias="checked">checked.png</file>
+        <file alias="unchecked">unchecked.png</file>
+    </qresource>
+</RCC>

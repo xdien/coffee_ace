@@ -55,8 +55,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->statusBar->addPermanentWidget(statusLabel);
     ///xac dinh quyen
     ///
-    ui->actionBH->setVisible(false);
-    ui->actionQuan_Ly_Luong->setDisabled(true);
+    //ui->actionBH->setVisible(false);
+    //ui->actionQuan_Ly_Luong->setDisabled(true);
     //ui->actionQuyen->setDisabled(true);
     //ui->actionTai_Khoan->setDisabled(true);
 }
@@ -96,7 +96,7 @@ void MainWindow::on_actionAbout_Qt_triggered()
 ///
 void MainWindow::capnhatPhanQuyen(QString username)//cap nhat phan quyen dua theo macv
 {
-    ui->actionQuan_Ly_Luong->setDisabled(true);
+    //ui->actionQuan_Ly_Luong->setDisabled(true);
     ui->actionQuyen->setDisabled(true);
     ui->actionTai_Khoan->setDisabled(true);
     ui->actionHop_dong->setEnabled(false);
@@ -109,7 +109,7 @@ void MainWindow::capnhatPhanQuyen(QString username)//cap nhat phan quyen dua the
     ui->actionNgh_l_u->setEnabled(Common::timQuyen(tenquyen::QLNghiLuu));
     ui->actionTuy_n_nh_n_vi_n->setEnabled(false);
     ui->actionTuy_n_nh_n_vi_n->setEnabled(Common::timQuyen(tenquyen::QLTuyenNV));
-    ui->actionQuan_Ly_Luong->setEnabled(Common::timQuyen(tenquyen::xemTinhLuong));
+    //ui->actionQuan_Ly_Luong->setEnabled(Common::timQuyen(tenquyen::xemTinhLuong));
     ui->actionThuong->setEnabled(false);
     ui->actionThuong->setEnabled(Common::timQuyen(tenquyen::QLThuong));
     statusLabel->setText("Xin chào! " + username);
@@ -168,4 +168,13 @@ void MainWindow::on_actionNhapHang_triggered()
     ////diaTuyen->setAttribute(Qt::WA_DeleteOnClose,true);//xoa vung nho dialog khi dong cua so
     }
     chamCongForm->showMaximized();*/
+}
+
+void MainWindow::on_actionB_n_h_ng_triggered()
+{
+    QQuickView *view2 = new QQuickView();
+
+    view2->setSource(QUrl("qrc:/banhang.qml"));
+    view2->show();
+
 }

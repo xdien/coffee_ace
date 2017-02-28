@@ -83,10 +83,8 @@
    </attribute>
    <addaction name="actionDan_nhap"/>
    <addaction name="separator"/>
-   <addaction name="actionNhanVien"/>
-   <addaction name="actionNhapHang"/>
+   <addaction name="actionB_n_h_ng"/>
    <addaction name="separator"/>
-   <addaction name="actionQuan_Ly_Luong"/>
   </widget>
   <action name="actionSQL">
    <property name="text">
@@ -96,32 +94,6 @@
   <action name="actionDan_nhap">
    <property name="text">
     <string>Đăng nhập</string>
-   </property>
-  </action>
-  <action name="actionNhanVien">
-   <property name="text">
-    <string>DS Nhân viên</string>
-   </property>
-   <property name="toolTip">
-    <string>Danh sách sinh viên cho từng phòng</string>
-   </property>
-  </action>
-  <action name="actionNhapThuoc">
-   <property name="text">
-    <string>Nhập thuốc</string>
-   </property>
-   <property name="toolTip">
-    <string>From nhap hang</string>
-   </property>
-  </action>
-  <action name="actionTC_cho_tr_em">
-   <property name="text">
-    <string>&amp;TC cho trẻ em</string>
-   </property>
-  </action>
-  <action name="actionBenh_truyen_nhiem">
-   <property name="text">
-    <string>&amp;Bệnh truyền nhiễm</string>
    </property>
   </action>
   <action name="actionAbout_Qt">
@@ -137,11 +109,6 @@
   <action name="actionQuan_ly_NKH">
    <property name="text">
     <string>Nhóm khách hàng</string>
-   </property>
-  </action>
-  <action name="actionNhapHang_2">
-   <property name="text">
-    <string>Nhập Hàng</string>
    </property>
   </action>
   <action name="actionQuyen">
@@ -175,11 +142,6 @@
     <string>Quản lý giá thuốc</string>
    </property>
   </action>
-  <action name="actionNhapHang">
-   <property name="text">
-    <string>Chấm công</string>
-   </property>
-  </action>
   <action name="actionH_a_n">
    <property name="text">
     <string>Lương nhân viên</string>
@@ -193,27 +155,6 @@
   <action name="actionHang_Hoa">
    <property name="text">
     <string>Hàng Hóa</string>
-   </property>
-  </action>
-  <action name="actionBH">
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
-   <property name="text">
-    <string>Bảo hiểm</string>
-   </property>
-  </action>
-  <action name="actionTuyen">
-   <property name="text">
-    <string>Tuyển NV</string>
-   </property>
-  </action>
-  <action name="actionQuan_Ly_Luong">
-   <property name="text">
-    <string>Tính lương</string>
-   </property>
-   <property name="toolTip">
-    <string>Chức năng tính lương dựa theo kỳ, in báo cáo lương </string>
    </property>
   </action>
   <action name="actionHop_dong">
@@ -274,6 +215,14 @@
   <action name="actionThuong">
    <property name="text">
     <string>Thưởng</string>
+   </property>
+  </action>
+  <action name="actionB_n_h_ng">
+   <property name="text">
+    <string>Bán hàng</string>
+   </property>
+   <property name="toolTip">
+    <string>Buôn bán hàng ngày</string>
    </property>
   </action>
  </widget>

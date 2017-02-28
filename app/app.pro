@@ -118,8 +118,10 @@ FORMS    += mainwindow.ui \
 
 
 DISTFILES += \
-    img/checked.png
+    img/checked.png \
+    banhang.qml
 
 RESOURCES += \
-    img/img.qrc
+    img/img.qrc \
+    app.qrc
 

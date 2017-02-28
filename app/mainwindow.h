@@ -16,6 +16,8 @@
 #include "lrreportengine.h" //to add report engine
 #include "lrcallbackdatasourceintf.h" //if you want use callback datasources
 #include "config/common.h"
+#include <QQmlApplicationEngine>
+#include <QQuickView>
 
 namespace Ui {
 class MainWindow;
@@ -47,6 +49,8 @@ private slots:
      void on_actionTai_Khoan_triggered();
 
      void on_actionNhapHang_triggered();
+
+     void on_actionB_n_h_ng_triggered();
 
 private:
     Ui::MainWindow *ui;

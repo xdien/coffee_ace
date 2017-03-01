@@ -91,7 +91,8 @@ SOURCES += main.cpp\
     chucnang/formtaikhoan.cpp \
     chucnang/chitiet/dialogdoimatkhau.cpp \
     utils/taikhoan.cpp \
-    utils/quyen.cpp
+    utils/quyen.cpp \
+    chucnang/dialogchitietban.cpp
 
 HEADERS  += mainwindow.h \
     dialog_setting.h \
@@ -105,7 +106,8 @@ HEADERS  += mainwindow.h \
     chucnang/formtaikhoan.h \
     chucnang/chitiet/dialogdoimatkhau.h \
     utils/taikhoan.h \
-    utils/quyen.h
+    utils/quyen.h \
+    chucnang/dialogchitietban.h
 
 FORMS    += mainwindow.ui \
     dialog_setting.ui \
@@ -114,14 +116,15 @@ FORMS    += mainwindow.ui \
     chucnang/formquyen.ui \
     chucnang/formtaikhoan.ui \
     chucnang/formphanquyen.ui \
-    chucnang/chitiet/dialogdoimatkhau.ui
+    chucnang/chitiet/dialogdoimatkhau.ui \
+    chucnang/dialogchitietban.ui
 
 
 DISTFILES += \
     img/checked.png \
-    banhang.qml
+    banhang.qml \
+    img/chair.png
 
 RESOURCES += \
-    img/img.qrc \
     app.qrc
 

@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file>banhang.qml</file>
+        <file>img/chair.png</file>
     </qresource>
 </RCC>

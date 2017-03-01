@@ -1,4 +1,5 @@
 import QtQuick 2.5
+import QtQuick.Layouts 1.1
 Item {
     id: prod_item_view
     width: 920
@@ -9,6 +10,9 @@ Item {
         ListElement {
             name: "Apple"
             cost: 2.45
+            chiecKhau: 0
+            trangThai: true
+            gioVao: "11:22:11"
         }
         ListElement {
             name: "Orange"
@@ -25,16 +29,45 @@ Item {
         Item {
             width: 150
             height: 150
-            Rectangle{
-                anchors.fill: parent
-               color: "#ddaa33"
-            }
-            Row{
-                width: parent.width
 
-                Text { text: name
+            Rectangle{
+                id: ban
+                anchors.fill: parent
+               color: trangThai?"red":"blue"
+
+               RowLayout{
+                   //width: parent.width
+                   anchors.bottom: parent.bottom
+                   anchors.leftMargin: 99
+                   Text {
+                       text: name}
+                   Text { anchors.margins: 99
+                       text: '$' + cost }
+               }
+               RowLayout{
+                   Text {
+                       text: qsTr("Gio vao")
+                   }
+                   Text{
+                       text: gioVao
+                   }
+               }
+            }
+            Image {
+                anchors.horizontalCenter: parent.horizontalCenter;
+                    width: 100
+                    height: 100
+                    source: "img/chair.png"
+                    Text {
+                        text: qsTr("1")
+                        anchors.centerIn: parent
+                    }
                 }
-                Text { text: '$' + cost }
+
+            MouseArea{
+                anchors.fill: parent
+                onClicked: console.log("click.......")
+                onPressAndHold:  console.log("hold.......")
             }
         }
 

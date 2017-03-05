@@ -1,6 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include <QQuickItem>
 #include <QMainWindow>
 #include <QSqlQuery>
 #include <QMdiSubWindow>
@@ -17,7 +18,11 @@
 #include "lrcallbackdatasourceintf.h" //if you want use callback datasources
 #include "config/common.h"
 #include <QQmlApplicationEngine>
+#include "utils/PhieuXuat.h"
 #include <QQuickView>
+#include <QQmlEngine>
+#include <QQmlContext>
+#include "chucnang/dialogchitietban.h"
 
 namespace Ui {
 class MainWindow;
@@ -51,6 +56,7 @@ private slots:
      void on_actionNhapHang_triggered();
 
      void on_actionB_n_h_ng_triggered();
+     void moFormChiTiet(QString phieuXuatID);
 
 private:
     Ui::MainWindow *ui;
@@ -60,6 +66,7 @@ private:
     QList<QMdiSubWindow*> subwindowList;
     QObjectList objl;
     QLabel *statusLabel, *tinhtrangsql;
+    QPointer<QQuickView> view2;
     QPointer<FormTaiKhoan> formTaiKhoan;
 
 };

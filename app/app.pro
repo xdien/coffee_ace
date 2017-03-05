@@ -92,7 +92,11 @@ SOURCES += main.cpp\
     chucnang/chitiet/dialogdoimatkhau.cpp \
     utils/taikhoan.cpp \
     utils/quyen.cpp \
-    chucnang/dialogchitietban.cpp
+    chucnang/dialogchitietban.cpp \
+    utils/Ban.cpp \
+    utils/HangHoa.cpp \
+    utils/ChiTietPhieuXuat.cpp \
+    utils/PhieuXuat.cpp
 
 HEADERS  += mainwindow.h \
     dialog_setting.h \
@@ -107,7 +111,11 @@ HEADERS  += mainwindow.h \
     chucnang/chitiet/dialogdoimatkhau.h \
     utils/taikhoan.h \
     utils/quyen.h \
-    chucnang/dialogchitietban.h
+    chucnang/dialogchitietban.h \
+    utils/Ban.h \
+    utils/HangHoa.h \
+    utils/ChiTietPhieuXuat.h \
+    utils/PhieuXuat.h
 
 FORMS    += mainwindow.ui \
     dialog_setting.ui \

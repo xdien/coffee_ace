@@ -1,9 +1,13 @@
 import QtQuick 2.5
 import QtQuick.Layouts 1.1
+import QtQuick.Controls 2.0
 Item {
     id: prod_item_view
     width: 920
     height: 630
+
+    signal doubleClickItem(string anObject)
+
     ListModel {
         id: fruitModel
 
@@ -27,29 +31,30 @@ Item {
     Component {
         id: fruitDelegate
         Item {
+            id: itemDel
             width: 150
             height: 150
-
             Rectangle{
                 id: ban
                 anchors.fill: parent
-               color: trangThai?"red":"blue"
+               color: TRANG_THAI_TRONG?"red":"blue"
 
                RowLayout{
                    //width: parent.width
                    anchors.bottom: parent.bottom
-                   anchors.leftMargin: 99
+
                    Text {
-                       text: name}
-                   Text { anchors.margins: 99
-                       text: '$' + cost }
+                       id: banid
+                       text: BANID }
+                   Text {
+                       text: '$' }
                }
                RowLayout{
                    Text {
                        text: qsTr("Gio vao")
                    }
                    Text{
-                       text: gioVao
+                       text:"a"
                    }
                }
             }
@@ -59,20 +64,43 @@ Item {
                     height: 100
                     source: "img/chair.png"
                     Text {
-                        text: qsTr("1")
+                        text: TEN
                         anchors.centerIn: parent
                     }
                 }
 
             MouseArea{
                 anchors.fill: parent
-                onClicked: console.log("click.......")
-                onPressAndHold:  console.log("hold.......")
+                acceptedButtons: Qt.LeftButton | Qt.RightButton
+                onClicked: {
+                               if (mouse.button == Qt.LeftButton)
+                               {
+                               }
+                               else if (mouse.button == Qt.RightButton)
+                               {
+                                   contextMenu.open()
+                               }
+                           }
+                onPressAndHold:  prod_item_view.doubleClickItem(banid.text)
             }
+            Menu { id: contextMenu
+
+                    MenuItem {
+                        text: qsTr('Chuyen Ban')
+                    }
+                    MenuItem{
+                        text: qsTr('In phieu')
+                    }
+                    MenuItem{
+                        text: qsTr('Thanh toan');
+                    }
+                    MenuItem{
+                        text:qsTr("Roi ban");
+                    }
+                }
         }
 
     }
-
     GridView{
         id: gridview
         focus: true
@@ -88,9 +116,9 @@ Item {
         anchors.fill: parent
         anchors.margins: 20
         delegate: fruitDelegate
-        model: fruitModel
-        cellWidth: 159
-        cellHeight: 100
+        model: phieuXuatModel
+        cellWidth: 158
+        cellHeight: 158
     }
 }
 //It is possible for roles to contain list data. In the following example we create a list of fruit attributes:

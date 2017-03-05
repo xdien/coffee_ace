@@ -65,6 +65,7 @@ MainWindow::~MainWindow()
     delete ui;
     delete moi;
     delete statusLabel;
+    delete view2;
     delete tinhtrangsql;
 }
 
@@ -172,9 +173,27 @@ void MainWindow::on_actionNhapHang_triggered()
 
 void MainWindow::on_actionB_n_h_ng_triggered()
 {
-    QQuickView *view2 = new QQuickView();
-
+    QSharedPointer<PhieuXuat> phieuXuatModel(new PhieuXuat(this));
+    //phieuXuatModel = new PhieuXuat(this);
+    phieuXuatModel->setQuery("select * from BAN");
+    if(view2.isNull())
+        view2 = new QQuickView();
+    QQmlContext *eng = view2->engine()->rootContext();
+    eng->setContextProperty("phieuXuatModel",phieuXuatModel.data());
     view2->setSource(QUrl("qrc:/banhang.qml"));
+    QQuickItem *item = view2->rootObject();
+    connect(item,SIGNAL(doubleClickItem(QString)),this,SLOT(moFormChiTiet(QString)));
     view2->show();
 
+
+
+}
+
+void MainWindow::moFormChiTiet(QString phieuXuatID)
+{
+    qDebug() << phieuXuatID;
+    QPointer<DialogChiTietBan> ctBan;
+    ctBan = new DialogChiTietBan();
+    ctBan->setAttribute(Qt::WA_DeleteOnClose);
+    ctBan->exec();
 }

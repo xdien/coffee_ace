@@ -189,11 +189,10 @@ void MainWindow::on_actionB_n_h_ng_triggered()
 
 }
 
-void MainWindow::moFormChiTiet(QString phieuXuatID)
+void MainWindow::moFormChiTiet(QString banid)
 {
-    qDebug() << phieuXuatID;
     QPointer<DialogChiTietBan> ctBan;
-    ctBan = new DialogChiTietBan();
+    ctBan = new DialogChiTietBan(banid);
     ctBan->setAttribute(Qt::WA_DeleteOnClose);
-    ctBan->exec();
+    ctBan->show();
 }

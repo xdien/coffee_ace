@@ -9,21 +9,30 @@
 #if !defined(__COFFEE_ACE_ChiTietPhieuXuat_h)
 #define __COFFEE_ACE_ChiTietPhieuXuat_h
 #include <QString>
+#include <QSqlQuery>
+#include <QVariant>
+#include <QSqlError>
+
+#include <QDebug>
 class ChiTietPhieuXuat
 {
 public:
    /* Chuyen ban cho tung item */
    int chuyenBan(void);
-
+   bool capNhat();
    int soLuong;
    float chiecKhau;
    int tongTien;
    QString tenHang;
    int giaBanHienTai;
+   bool daThanhToan;
+   QString hanghoaid;
+   QString banid;
+
 
 protected:
 private:
-
+   QSqlQuery query;
 };
 
 #endif

@@ -11,6 +11,7 @@
 #include <QTime>
 #include <QSqlQuery>
 #include <QSqlQueryModel>
+#include "utils/manageindex.h"
 class ChiTietPhieuXuat;
 
 class PhieuXuat : public QSqlQueryModel
@@ -23,18 +24,20 @@ public:
     Q_INVOKABLE QVariant data(const QModelIndex &index, int role) const;
     virtual QHash<int, QByteArray> roleNames() const;
         ///
-   int taoPhieu(void);
+   int taoPhieu(QString banid);
    int inPhieu(void);
    int chuyenBan(void);
    int capNhatGhiChu(void);
+   int kiemTraThanhToan(QString banid);
 
    QString phieuXuatID;
    float chiecKhau;
-   QTime gioVao;
-   QTime gioRa;
+   QString gioVao;
+   QString gioRa;
    int tongTien;
    QString ghiChu;
    bool trangThaiKhoa;
+   bool daThanhToan;
    /* Ngay Lap tu chay theo he thong */
    QDateTime ngayLapHt;
    
@@ -42,6 +45,7 @@ public:
 
 protected:
 private:
+   QSqlQuery query;
    const static char* COLUMN_NAMES[];
       const static char* SQL_SELECT;
       QHash<int, QByteArray> m_roleNames;

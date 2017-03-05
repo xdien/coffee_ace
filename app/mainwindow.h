@@ -56,7 +56,7 @@ private slots:
      void on_actionNhapHang_triggered();
 
      void on_actionB_n_h_ng_triggered();
-     void moFormChiTiet(QString phieuXuatID);
+     void moFormChiTiet(QString banid);
 
 private:
     Ui::MainWindow *ui;

@@ -6,7 +6,7 @@ Item {
     width: 920
     height: 630
 
-    signal doubleClickItem(string anObject)
+    signal doubleClickItem(string banid)
 
     ListModel {
         id: fruitModel

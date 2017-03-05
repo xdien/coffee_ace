@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     3/1/2017 3:39:57 PM                          */
+/* Created on:     3/5/2017 9:38:07 PM                          */
 /*==============================================================*/
 
 
@@ -20,6 +20,7 @@ create table BAN
    BANID                varchar(12) not null,
    TEN                  national varchar(512),
    TRANG_THAI_TRONG     bool comment 'Tr?ng thái bàn',
+   ID_PHIEU_XUAT_HT     varchar(12) comment 'Chua id phieu xuat hien tai',
    primary key (BANID)
 );
 
@@ -68,6 +69,7 @@ create table PHIEU_XUAT
    TRANG_THAI_KHOA      bool,
    NGAY_LAP_HT          timestamp default CURRENT_TIMESTAMP comment 'Ngay Lap tu chay theo he thong',
    DA_THANH_TOAN        bool comment 'Thuoc tinh kiem tra phie, bo qua neu phieu duoc tick la da thanh toan',
+   TRA_TRUOC            int,
    primary key (PHIEUXUATID)
 );
 

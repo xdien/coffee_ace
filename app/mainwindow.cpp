@@ -16,11 +16,11 @@ MainWindow::MainWindow(QWidget *parent) :
     /*Thanh Thong bao trang thai status bar*/
     statusLabel = new QLabel(this);
     tinhtrangsql = new QLabel(this);
+    phieuXuatModel = new PhieuXuat(this);
     //lay nam hien tai
     Common::NAM_HIEN_TAI = QDate::currentDate().year();
     statusLabel->setText("Bạn chưa đăng nhập");
     ui->actionChuc_vu->setVisible(false);
-
     if(db.isOpen())
     {
         /*Khoi dong cac form*/
@@ -67,6 +67,7 @@ MainWindow::~MainWindow()
     delete statusLabel;
     delete view2;
     delete tinhtrangsql;
+    delete phieuXuatModel;
 }
 
 void MainWindow::on_actionSQL_triggered()
@@ -173,26 +174,55 @@ void MainWindow::on_actionNhapHang_triggered()
 
 void MainWindow::on_actionB_n_h_ng_triggered()
 {
-    QSharedPointer<PhieuXuat> phieuXuatModel(new PhieuXuat(this));
     //phieuXuatModel = new PhieuXuat(this);
     phieuXuatModel->setQuery("select * from BAN");
-    if(view2.isNull())
+    if(view2.isNull()){
+
         view2 = new QQuickView();
-    QQmlContext *eng = view2->engine()->rootContext();
-    eng->setContextProperty("phieuXuatModel",phieuXuatModel.data());
-    view2->setSource(QUrl("qrc:/banhang.qml"));
-    QQuickItem *item = view2->rootObject();
-    connect(item,SIGNAL(doubleClickItem(QString)),this,SLOT(moFormChiTiet(QString)));
+        QQmlContext *eng = view2->engine()->rootContext();
+        eng->setContextProperty("phieuXuatModel",phieuXuatModel);
+        view2->setSource(QUrl("qrc:/banhang.qml"));
+        QQuickItem *item = view2->rootObject();
+        connect(item,SIGNAL(doubleClickItem(QString)),this,SLOT(moFormChiTiet(QString)));
+        connect(item,SIGNAL(inVaRoiBan(QString)),this,SLOT(inPhieuVaRoiBan(QString)));
+
+        //ui->mdiArea->addSubWindow(view2.data());
+    }
+
     view2->show();
-
-
-
 }
 
 void MainWindow::moFormChiTiet(QString banid)
 {
     QPointer<DialogChiTietBan> ctBan;
-    ctBan = new DialogChiTietBan(banid);
+    ctBan = new DialogChiTietBan(banid,phieuXuatModel);
     ctBan->setAttribute(Qt::WA_DeleteOnClose);
-    ctBan->show();
+    ctBan->exec();
+    phieuXuatModel->refresh();
 }
+
+void MainWindow::inPhieuVaRoiBan(QString pcid)
+{
+    phieuXuatModel->inBill(pcid);
+
+    //UP 2 THUOC TINH
+    if(phieuXuatModel->roiBan( pcid,true)){
+        phieuXuatModel->refresh();
+    }
+
+}
+
+/*void MainWindow::xemBill(QString pcid)
+{
+    qDebug()<< pcid;
+    QSharedPointer<QSqlQueryModel> hocThuViecModel;
+    hocThuViecModel.reset(new QSqlQueryModel());
+    hocThuViecModel->setQuery("SELECT * from CHI_TIET_PHIEU_XUAT "
+                              " where PHIEUXUATID = '"+pcid+"'");
+
+    LimeReport::ReportEngine* report = new LimeReport::ReportEngine();
+
+    report->loadFromFile(QApplication::applicationDirPath()+"/reports/bill_coffee.lrxml");
+    report->dataManager()->addModel("chitietpc",hocThuViecModel.data(),true);
+    report->previewReport();
+}*/

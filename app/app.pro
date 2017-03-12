@@ -131,7 +131,8 @@ FORMS    += mainwindow.ui \
 DISTFILES += \
     img/checked.png \
     banhang.qml \
-    img/chair.png
+    img/chair.png \
+    delegate_item.qml
 
 RESOURCES += \
     app.qrc

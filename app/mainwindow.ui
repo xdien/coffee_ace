@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Nhân Sự</string>
+   <string>Coffee ACE</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -56,8 +56,6 @@
     <property name="title">
      <string>Báo cáo</string>
     </property>
-    <addaction name="actionH_a_n"/>
-    <addaction name="actionL_ng_theo_ph_ng"/>
    </widget>
    <widget class="QMenu" name="menuQuan_ly">
     <property name="title">

@@ -9,6 +9,7 @@
 #include <math.h>
 #include <QDebug>
 #include <QVector>
+#include <QStandardItemModel>
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
@@ -80,7 +81,8 @@ public:
     static int NGAY_BAT_DAU_CHAM_CONG;
     static int NAM_HIEN_TAI;
     static int kyHienTai;
-    static int findIndex(QSqlQueryModel *model,QString value, int columnNum);
+    static int findIndex(QStandardItemModel *model, QString value, int columnNum);
+    static int findIndex(QSqlQueryModel *model, QString value, int columnNum);
     static void readblock3(char scr[],char result[]);
     static QString dochangchuc(int so, bool daydu);
     static QString docblock(int so, bool daydu);

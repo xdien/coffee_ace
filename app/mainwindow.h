@@ -1,6 +1,8 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "lrreportengine.h"
+#include "lrcallbackdatasourceintf.h"
 #include <QQuickItem>
 #include <QMainWindow>
 #include <QSqlQuery>
@@ -22,6 +24,7 @@
 #include <QQuickView>
 #include <QQmlEngine>
 #include <QQmlContext>
+
 #include "chucnang/dialogchitietban.h"
 
 namespace Ui {
@@ -57,6 +60,8 @@ private slots:
 
      void on_actionB_n_h_ng_triggered();
      void moFormChiTiet(QString banid);
+     //void xemBill(QString pcid);
+     void inPhieuVaRoiBan(QString pcid);
 
 private:
     Ui::MainWindow *ui;
@@ -68,6 +73,7 @@ private:
     QLabel *statusLabel, *tinhtrangsql;
     QPointer<QQuickView> view2;
     QPointer<FormTaiKhoan> formTaiKhoan;
+    PhieuXuat *phieuXuatModel;
 
 };
 

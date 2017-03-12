@@ -2,5 +2,7 @@
     <qresource prefix="/">
         <file>banhang.qml</file>
         <file>img/chair.png</file>
+        <file>img/furniture.png</file>
+        <file>img/cupcoffee.png</file>
     </qresource>
 </RCC>

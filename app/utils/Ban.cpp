@@ -44,17 +44,19 @@ bool Ban::layThongTinBan(QString banid)
 {
     this->banID = banid;
     query.clear();
-    query.prepare("SELECT BANID,"
+    query.prepare("SELECT BAN.BANID,"
                   "TEN,"
                   "TRANG_THAI_TRONG,"
-                  "ID_PHIEU_XUAT_HT "
-                  "FROM BAN where BANID = :banid");
+                  "ID_PHIEU_XUAT_HT,TRA_TRUOC  "
+                  "FROM BAN left join PHIEU_XUAT on PHIEU_XUAT.PHIEUXUATID = ID_PHIEU_XUAT_HT "
+                  "where BAN.BANID = :banid");
     query.bindValue(":banid",banid);
     if(query.exec()){
         if(query.next()){
             this->ten = query.value("TEN").toString();
             this->trangThaiTrong = query.value("TRANG_THAI_TRONG").toBool();
             this->idPhieuXuatHt = query.value("ID_PHIEU_XUAT_HT").toString();
+            this->traTruoc = query.value("TRA_TRUOC").toInt();
             return true;
         }else{
             qDebug() << "Không thể lấy thông tin bàn theo yêu cầu "<< query.lastError().text();

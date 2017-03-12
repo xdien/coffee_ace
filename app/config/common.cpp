@@ -87,6 +87,14 @@ bool Common::timQuyen(const QString q)
     return false;
 }
 
+int Common::findIndex(QStandardItemModel *model, QString value, int columnNum)
+{
+    for (int i = 0; i < model->rowCount(); ++i) {
+        if(model->index(i,columnNum).data().toString() == value)
+            return i;
+    }
+    return -1;
+}
 int Common::findIndex(QSqlQueryModel *model, QString value, int columnNum)
 {
     for (int i = 0; i < model->rowCount(); ++i) {

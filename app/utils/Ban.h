@@ -25,6 +25,7 @@ public:
    QString banID;
    QString ten;
    QString idPhieuXuatHt;
+   int traTruoc;//thuc tinh nay chi co ben phieu_xuat
    /* Tr?ng thái bàn */
    bool trangThaiTrong;
    

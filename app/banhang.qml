@@ -7,100 +7,109 @@ Item {
     height: 630
 
     signal doubleClickItem(string banid)
-
-    ListModel {
-        id: fruitModel
-
-        ListElement {
-            name: "Apple"
-            cost: 2.45
-            chiecKhau: 0
-            trangThai: true
-            gioVao: "11:22:11"
-        }
-        ListElement {
-            name: "Orange"
-            cost: 3.25
-        }
-        ListElement {
-            name: "Banana"
-            cost: 1.95
-        }
-    }
-
+    signal xemPhieu(string pcid)
+    signal inVaRoiBan(string pcid)
     Component {
         id: fruitDelegate
         Item {
             id: itemDel
             width: 150
             height: 150
+
             Rectangle{
-                id: ban
-                anchors.fill: parent
-               color: TRANG_THAI_TRONG?"red":"blue"
+                width: parent.width
+                height: 100;
+                color: TRANG_THAI_TRONG?"#e7e7e7":"#A793EA"
+                Text {
+                    id: tenBan
+                    x: 53
+                    y: 68
+                    text: TEN
+                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    z: 1
+                    font.pixelSize: 12
+                }
+                Text {
+                    id: phieuXuatId
+                    text: PHIEUXUATID
+                    visible: false
+                }
+                Text {
+                    id: gioVao
+                    x: 0
+                    y: 136
+                    width: 150
+                    height: 14
+                    text: GIO_VAO
+                    font.pixelSize: 12
+                }
 
-               RowLayout{
-                   //width: parent.width
-                   anchors.bottom: parent.bottom
-
-                   Text {
-                       id: banid
-                       text: BANID }
-                   Text {
-                       text: '$' }
-               }
-               RowLayout{
-                   Text {
-                       text: qsTr("Gio vao")
-                   }
-                   Text{
-                       text:"a"
-                   }
-               }
             }
             Image {
-                anchors.horizontalCenter: parent.horizontalCenter;
-                    width: 100
-                    height: 100
-                    source: "img/chair.png"
-                    Text {
-                        text: TEN
-                        anchors.centerIn: parent
-                    }
-                }
+                id: image1
+                x: 25
+                y: 8
+                width: 100
+                height: 100
+                source: "qrc:/img/chair.png"
+            }
+
+            Text {
+                id: tongTien
+                x: 0
+                y: 116
+                width: 150
+                height: 14
+                text: TRANG_THAI_TRONG?qsTr(""):qsTr("Tổng tiền: "+ TONG_TIEN)
+                font.pixelSize: 12
+            }
+
+            Text {
+                id: banid
+                x: 0
+                y: 0
+                text: BANID
+                font.pixelSize: 12
+            }
+
 
             MouseArea{
                 anchors.fill: parent
                 acceptedButtons: Qt.LeftButton | Qt.RightButton
                 onClicked: {
-                               if (mouse.button == Qt.LeftButton)
-                               {
-                               }
-                               else if (mouse.button == Qt.RightButton)
-                               {
-                                   contextMenu.open()
-                               }
-                           }
-                onPressAndHold:  prod_item_view.doubleClickItem(banid.text)
+                    if (mouse.button == Qt.LeftButton)
+                    {
+                    }
+                    else if (mouse.button == Qt.RightButton)
+                    {
+                        contextMenu.open()
+                    }
+                }
+                onDoubleClicked: prod_item_view.doubleClickItem(banid.text)
             }
             Menu { id: contextMenu
 
-                    MenuItem {
-                        text: qsTr('Chuyen Ban')
-                    }
-                    MenuItem{
-                        text: qsTr('In phieu')
-                    }
-                    MenuItem{
-                        text: qsTr('Thanh toan');
-                    }
-                    MenuItem{
-                        text:qsTr("Roi ban");
-                    }
+                MenuItem {
+                    text: qsTr('In và rời bàn')
+                    onClicked: prod_item_view.inVaRoiBan(phieuXuatId.text)
                 }
+                MenuItem{
+                    text: qsTr('In phieu')
+                    onClicked: phieuXuatModel.inBill(phieuXuatId.text);
+                }
+               /* MenuItem{
+                    text:qsTr("Roi ban");
+                    onClicked: {
+
+                        //phieuXuatModel.roiBan(banid.text,true)
+                    }
+                }*/
+            }
         }
 
     }
+
     GridView{
         id: gridview
         focus: true
@@ -121,32 +130,3 @@ Item {
         cellHeight: 158
     }
 }
-//It is possible for roles to contain list data. In the following example we create a list of fruit attributes:
-
-/*ListModel {
-    id: fruitModel
-
-    ListElement {
-        name: "Apple"
-        cost: 2.45
-        attributes: [
-            ListElement { description: "Core" },
-            ListElement { description: "Deciduous" }
-        ]
-    }
-    ListElement {
-        name: "Orange"
-        cost: 3.25
-        attributes: [
-            ListElement { description: "Citrus" }
-        ]
-    }
-    ListElement {
-        name: "Banana"
-        cost: 1.95
-        attributes: [
-            ListElement { description: "Tropical" },
-            ListElement { description: "Seedless" }
-        ]
-    }
-}*/

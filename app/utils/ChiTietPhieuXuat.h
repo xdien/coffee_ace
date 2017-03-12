@@ -20,6 +20,8 @@ public:
    /* Chuyen ban cho tung item */
    int chuyenBan(void);
    bool capNhat();
+   bool insert();
+   QString pcid;
    int soLuong;
    float chiecKhau;
    int tongTien;
@@ -28,7 +30,7 @@ public:
    bool daThanhToan;
    QString hanghoaid;
    QString banid;
-
+   bool xoa(QString pcid,QString hanghoaid);
 
 protected:
 private:

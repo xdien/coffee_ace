@@ -25,14 +25,15 @@ bool ChiTietPhieuXuat::capNhat()
     query.clear();
     query.prepare("update CHI_TIET_PHIEU_XUAT set SO_LUONG = :soLuong, CHIEC_KHAU=:chiecKhau,"
                   "TONG_TIEN=:tongTien,TEN_HANG=:tenHang,GIA_BAN_HIEN_TAI=:giaBanHienTai,"
-                  "DA_THANH_TOAN=:daThanhToan where BANID = :banid and HANGHOAID = :hanghoaid");
+                  "DA_THANH_TOAN=:daThanhToan where HANGHOAID = :hanghoaid");
     query.bindValue(":soLuong",soLuong);
     query.bindValue(":chiecKhau",chiecKhau);
-    query.bindValue(":tongTien",tenHang);
+    query.bindValue(":tongTien",tongTien);
     query.bindValue(":giaBanHienTai",giaBanHienTai);
     query.bindValue(":daThanhToan",daThanhToan);
     query.bindValue(":banid",banid);
     query.bindValue(":hanghoaid",hanghoaid);
+    query.bindValue(":tenHang",tenHang);
     if(query.exec()){
         return true;
     }else{
@@ -40,4 +41,42 @@ bool ChiTietPhieuXuat::capNhat()
         return false;
     }
 
+}
+
+bool ChiTietPhieuXuat::insert()
+{
+    query.clear();
+    query.prepare("INSERT INTO CHI_TIET_PHIEU_XUAT(PHIEUXUATID,HANGHOAID, SO_LUONG, CHIEC_KHAU,TONG_TIEN,"
+                  "TEN_HANG, GIA_BAN_HIEN_TAI,DA_THANH_TOAN) VALUES (:pcid,:hanghoaid,:soLuong,:chiecKhau,"
+                  ":tongTien,:tenHang,:giaBanHienTai,:daThanhToan) on DUPLICATE KEY "
+                  "UPDATE SO_LUONG=:soLuong,TONG_TIEN=:tongTien");
+    query.bindValue(":soLuong",soLuong);
+    query.bindValue(":chiecKhau",chiecKhau);
+    query.bindValue(":tongTien",tongTien);
+    query.bindValue(":giaBanHienTai",giaBanHienTai);
+    query.bindValue(":daThanhToan",daThanhToan);
+    query.bindValue(":banid",banid);
+    query.bindValue(":hanghoaid",hanghoaid);
+    query.bindValue(":tenHang",tenHang);
+    query.bindValue(":pcid",pcid);
+    if(query.exec()){
+        return true;
+    }else{
+        qDebug() << "Khong the them chi tiet hang" <<query.lastError().text();
+        return false;
+    }
+}
+
+bool ChiTietPhieuXuat::xoa(QString pcid, QString hanghoaid)
+{
+    query.clear();
+    query.prepare("delete from CHI_TIET_PHIEU_XUAT where PHIEUXUATID = :pcid and HANGHOAID=:hanghoaid");
+    query.bindValue(":hanghoaid",hanghoaid);
+    query.bindValue(":pcid",pcid);
+    if(query.exec()){
+        return true;
+    }else{
+        qDebug() << "KHong the xoa ct hang "<< query.lastError().text();
+        return false;
+    }
 }

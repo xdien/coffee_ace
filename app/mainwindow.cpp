@@ -226,3 +226,19 @@ void MainWindow::inPhieuVaRoiBan(QString pcid)
     report->dataManager()->addModel("chitietpc",hocThuViecModel.data(),true);
     report->previewReport();
 }*/
+
+void MainWindow::on_actionH_ng_h_a_triggered()
+{
+    DialogSuaHangHoa *fhangHoa;
+    fhangHoa= new DialogSuaHangHoa();
+    fhangHoa->setAttribute(Qt::WA_DeleteOnClose);
+    fhangHoa->exec();
+}
+
+void MainWindow::on_actionB_o_c_o_doanh_thu_triggered()
+{
+    DialogBaoCaoDoanhThu *fbaoCao;
+    fbaoCao = new DialogBaoCaoDoanhThu();
+    fbaoCao->setAttribute(Qt::WA_DeleteOnClose);
+    fbaoCao->exec();
+}

@@ -247,6 +247,25 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>lineEditMaHang</tabstop>
+  <tabstop>lineEditTenHang</tabstop>
+  <tabstop>spinBoxSoluong</tabstop>
+  <tabstop>pushButton_4</tabstop>
+  <tabstop>pushButtonVaoban</tabstop>
+  <tabstop>spinBoxSoTien</tabstop>
+  <tabstop>spinBoxSoTienDaTra</tabstop>
+  <tabstop>spinBoxTongSoTienTruocCK</tabstop>
+  <tabstop>spinBoxSoTienConTra</tabstop>
+  <tabstop>doubleSpinBoxChiecKhau</tabstop>
+  <tabstop>spinBoxTongSoTien</tabstop>
+  <tabstop>pushButton_3</tabstop>
+  <tabstop>pushButtonThanhToan</tabstop>
+  <tabstop>spinBoxDonGia</tabstop>
+  <tabstop>pushButton</tabstop>
+  <tabstop>spinBoxSoTienChieckhau</tabstop>
+  <tabstop>tableView</tabstop>
+ </tabstops>
  <resources/>
  <connections>
   <connection>

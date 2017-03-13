@@ -56,11 +56,13 @@
     <property name="title">
      <string>Báo cáo</string>
     </property>
+    <addaction name="actionB_o_c_o_doanh_thu"/>
    </widget>
    <widget class="QMenu" name="menuQuan_ly">
     <property name="title">
-     <string>Quản lý</string>
+     <string>Danh mục</string>
     </property>
+    <addaction name="actionH_ng_h_a"/>
    </widget>
    <addaction name="menuCai_dat"/>
    <addaction name="menuHe_thong"/>
@@ -221,6 +223,16 @@
    </property>
    <property name="toolTip">
     <string>Buôn bán hàng ngày</string>
+   </property>
+  </action>
+  <action name="actionH_ng_h_a">
+   <property name="text">
+    <string>Hàng hóa</string>
+   </property>
+  </action>
+  <action name="actionB_o_c_o_doanh_thu">
+   <property name="text">
+    <string>Báo cáo doanh thu</string>
    </property>
   </action>
  </widget>

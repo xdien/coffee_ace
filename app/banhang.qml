@@ -18,8 +18,8 @@ Item {
 
             Rectangle{
                 width: parent.width
-                height: 100;
-                color: TRANG_THAI_TRONG?"#e7e7e7":"#A793EA"
+                height: 115;
+                color: TRANG_THAI_TRONG?"#EEEEEE":"#EF9A9A"
                 Text {
                     id: tenBan
                     x: 53
@@ -32,7 +32,7 @@ Item {
                 }
                 Text {
                     id: phieuXuatId
-                    text: PHIEUXUATID
+                    text: TRANG_THAI_TRONG?qsTr(""):PHIEUXUATID
                     visible: false
                 }
                 Text {
@@ -41,7 +41,7 @@ Item {
                     y: 136
                     width: 150
                     height: 14
-                    text: GIO_VAO
+                    text: TRANG_THAI_TRONG?qsTr(""):GIO_VAO
                     font.pixelSize: 12
                 }
 
@@ -129,4 +129,5 @@ Item {
         cellWidth: 158
         cellHeight: 158
     }
+    Component.onCompleted: phieuXuatModel.refresh();
 }

@@ -96,7 +96,9 @@ SOURCES += main.cpp\
     utils/Ban.cpp \
     utils/HangHoa.cpp \
     utils/ChiTietPhieuXuat.cpp \
-    utils/PhieuXuat.cpp
+    utils/PhieuXuat.cpp \
+    chucnang/dialogsuahanghoa.cpp \
+    chucnang/chitiet/dialogbaocaodoanhthu.cpp
 
 HEADERS  += mainwindow.h \
     dialog_setting.h \
@@ -115,7 +117,9 @@ HEADERS  += mainwindow.h \
     utils/Ban.h \
     utils/HangHoa.h \
     utils/ChiTietPhieuXuat.h \
-    utils/PhieuXuat.h
+    utils/PhieuXuat.h \
+    chucnang/dialogsuahanghoa.h \
+    chucnang/chitiet/dialogbaocaodoanhthu.h
 
 FORMS    += mainwindow.ui \
     dialog_setting.ui \
@@ -125,7 +129,9 @@ FORMS    += mainwindow.ui \
     chucnang/formtaikhoan.ui \
     chucnang/formphanquyen.ui \
     chucnang/chitiet/dialogdoimatkhau.ui \
-    chucnang/dialogchitietban.ui
+    chucnang/dialogchitietban.ui \
+    chucnang/dialogsuahanghoa.ui \
+    chucnang/chitiet/dialogbaocaodoanhthu.ui
 
 
 DISTFILES += \

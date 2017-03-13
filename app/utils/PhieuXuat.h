@@ -26,7 +26,7 @@ class PhieuXuat : public QSqlQueryModel
 public:
     explicit PhieuXuat(QObject *parent);
     ~PhieuXuat();
-    void refresh();
+    Q_INVOKABLE void refresh();
     Q_INVOKABLE QVariant data(const QModelIndex &index, int role) const;
     virtual QHash<int, QByteArray> roleNames() const;
         ///

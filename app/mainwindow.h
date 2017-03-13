@@ -24,8 +24,10 @@
 #include <QQuickView>
 #include <QQmlEngine>
 #include <QQmlContext>
+#include "chucnang/dialogsuahanghoa.h"
 
 #include "chucnang/dialogchitietban.h"
+#include "chucnang/chitiet/dialogbaocaodoanhthu.h"
 
 namespace Ui {
 class MainWindow;
@@ -62,6 +64,10 @@ private slots:
      void moFormChiTiet(QString banid);
      //void xemBill(QString pcid);
      void inPhieuVaRoiBan(QString pcid);
+
+     void on_actionH_ng_h_a_triggered();
+
+     void on_actionB_o_c_o_doanh_thu_triggered();
 
 private:
     Ui::MainWindow *ui;

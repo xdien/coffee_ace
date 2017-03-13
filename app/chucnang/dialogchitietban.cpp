@@ -128,6 +128,7 @@ void DialogChiTietBan::on_pushButtonVaoban_clicked()
             themMoiMatHang();
             setWindowTitle(ban->ten + " có khách");
             ui->pushButtonVaoban->setText("Roi ban");
+            this->done(0);
 
         }
 
@@ -150,6 +151,7 @@ void DialogChiTietBan::on_pushButtonVaoban_clicked()
             ui->lineEditMaHang->setText("");
             ui->lineEditTenHang->setText("");
             setWindowTitle(ban->ten + " đang trống");
+            this->done(0);
         }
         else
             QMessageBox::warning(this,"Lỗi roi ban","Khong the thao tac nay, bạn hãy tắt chương trình rồi mở lại or kiểm tra mạng",QMessageBox::Ok,QMessageBox::NoButton);
@@ -167,7 +169,7 @@ void DialogChiTietBan::layGiaTriTuIdQCompleter(const QModelIndex index)
 void DialogChiTietBan::layGiaTriTuTenQCompleter(const QModelIndex index)
 {
     ui->spinBoxDonGia->setValue(tenhangHoaModel->index(index.row(),2).data().toInt());
-    ui->lineEditTenHang->setText(tenhangHoaModel->index(index.row(),1).data().toString());
+    ui->lineEditMaHang->setText(tenhangHoaModel->index(index.row(),1).data().toString());
 }
 
 void DialogChiTietBan::on_spinBoxSoluong_valueChanged(int arg1)
